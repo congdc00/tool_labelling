@@ -3,7 +3,7 @@ from tqdm import tqdm
 import requests
 import yaml
 import os 
-
+CONFIG_PATH = "./configs/base.yaml"
 
 file_name = './logs/init/01_hn_female_ngochuyen_full_48k-fhg.json'
 
