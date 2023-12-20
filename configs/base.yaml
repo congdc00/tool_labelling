@@ -1,0 +1,15 @@
+input: "./data/input/01.txt"
+log: "./logs"
+api:
+  port: "https://vbee.vn/api/v1/tts" 
+  token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3MDMwODU3MTB9.9Ywf_gTKMyFlkpOx93zRcAyJLL-Sv6AQ-a7dWAjwskk"
+  app_id: "640838a3-5a0e-4fae-b94b-0c3ef76a80cb"
+  header: 
+    type: "Bearer"
+    content_type: "application/json"
+  content:
+    voice_code: "hn_female_ngochuyen_full_48k-fhg"
+    audio_type: "mp3" 
+    bitrate: 128
+    speed_rate: "1.0"  
+output: "./data/output"
