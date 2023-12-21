@@ -51,13 +51,13 @@ if __name__ == "__main__":
                 time.sleep(3)
                 print(f"wait pull {log_path}")
             # crawl data
-            n_loop = 0
             if not os.path.exists(save_path):
                
                 ss_path = f"{status_path}/{i}.txt"
                 info_1 = load_json_file(log_path)
                 
                 is_success = False
+                n_loop = 0
                 while not is_success:
                     request_id = info_1['result']['request_id']
                     info_2 = get_info(request_id, configs)
@@ -76,13 +76,14 @@ if __name__ == "__main__":
                             is_success = True
                             print(f"Done")
                     else:
-                        time.sleep(5)
-                        if n_loop <2:
-                            n_loop += 1 
-                        else: 
-                            break
+                       
                         print(f"wait process {log_path}")
-
+                        time.sleep(5)
+                        
+                    if n_loop <3:
+                        n_loop += 1 
+                    else: 
+                        break
 def check_done():
     return True
 
