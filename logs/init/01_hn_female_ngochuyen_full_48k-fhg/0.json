@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 86,
+        "request_id": "e8074827-00be-4c59-bf03-ba6909a38f07",
+        "sample_rate": "44100",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_female_ngochuyen_full_48k-fhg"
+    },
+    "status": 1,
+    "text": "hiện nay vị trí của bàn thờ thường được đặt trong phòng riêng ở tầng trên cùng của nhà",
+    "id": 0
+}

@@ -77,3 +77,19 @@ if __name__ == "__main__":
                         time.sleep(5)
                         print(f"wait process {log_path}")
 
+def check_done():
+    return True
+
+
+@repeat(every(5).seconds)
+def auto_push():
+    main()
+
+if __name__ == "__main__":
+   
+    while True:
+        is_continue = check_done()
+        if not is_continue:
+            break
+
+        schedule.run_pending()

@@ -3,6 +3,8 @@ import requests
 import yaml
 import os 
 import json
+import schedule
+from schedule import every, repeat
 
 CONFIG_PATH = "./configs/base.yaml"
 SCRIPT_PATH = "./scripts/change_voice_01.txt"
@@ -36,7 +38,7 @@ def save_data(log_path, content):
         json.dump(content, json_file, indent=4, ensure_ascii=False)
 
 
-if __name__ == "__main__":
+def main():
     with open(CONFIG_PATH, 'r') as file:
         configs = yaml.safe_load(file)
     
@@ -75,3 +77,18 @@ if __name__ == "__main__":
 
         
     print(f"DONE {len(voices)} voices and {len(data)} text")
+
+def check_done():
+    return True
+
+
+@repeat(every(5).seconds)
+def auto_push():
+    main()
+
+if __name__ == "__main__":
+    while True:
+        is_continue = check_done()
+        if not is_continue:
+            break
+        schedule.run_pending() 
