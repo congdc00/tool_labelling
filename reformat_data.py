@@ -21,6 +21,7 @@ if __name__ == "__main__":
                     index, text, path = line.split(",")
                     path = os.path.basename(path)
                     n_line = f"{path}|{text}"
+                    new_line.append(n_line)
         
         output_path = f"./data/metadata/{os.path.basename(voice)}.txt"
 
