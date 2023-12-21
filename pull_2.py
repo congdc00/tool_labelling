@@ -91,7 +91,7 @@ class Worker:
                 time.sleep(5)
                         
             loop += 1 
-            if loop == self.limit_loop:
+            if loop >= self.limit_loop:
                 break
         return True
     
