@@ -44,7 +44,7 @@ if __name__ == "__main__":
  
         for i, line in enumerate(data):
             log_path = f"{log_pre_path}/{i}.json"
-            save_path = output_path + "/" + f"{i}.mp3"
+            save_path = output_path + "/" + f"{i}.wav"
             
             while not os.path.exists(log_path):
                 time.sleep(3)
@@ -52,7 +52,7 @@ if __name__ == "__main__":
             # crawl data
             if not os.path.exists(save_path):
 
-                ss_path = f"{status_path}/{i}.json"
+                ss_path = f"{status_path}/{i}.txt"
                 info_1 = load_json_file(log_path)
                 
                 is_success = False

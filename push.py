@@ -6,7 +6,7 @@ import json
 
 CONFIG_PATH = "./configs/base.yaml"
 SCRIPT_PATH = "./scripts/change_voice_01.txt"
-MODE = "dev"
+MODE = "client"
 def push(input, configs):
     header = {
         "Authorization": f"{configs['api']['header']['type']} {configs['api']['token']}",
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         output_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}"
         os.makedirs(output_path, exist_ok = True)
 
-        for i, line in enumerate(data):
+        for i, line in tqdm(enumerate(data)):
             log_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}/{i}.json" 
 
             # skip 
