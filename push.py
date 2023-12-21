@@ -5,6 +5,7 @@ import os
 import json
 import schedule
 from schedule import every, repeat
+import threading
 
 CONFIG_PATH = "./configs/base.yaml"
 SCRIPT_PATH = "./scripts/change_voice_01.txt"
@@ -38,6 +39,8 @@ def save_data(log_path, content):
         json.dump(content, json_file, indent=4, ensure_ascii=False)
 
 
+
+
 def main():
     with open(CONFIG_PATH, 'r') as file:
         configs = yaml.safe_load(file)
@@ -56,8 +59,6 @@ def main():
         os.makedirs(output_path, exist_ok = True)
 
         for i, line in tqdm(enumerate(data)):
-            if i<4293:
-                continue
             log_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}/{i}.json" 
 
             # skip 
@@ -71,11 +72,6 @@ def main():
                 response['text'] = text
                 response['id'] = i
                 save_data(log_path, response)
-            
-            # test
-            if MODE == "dev":
-                if i >=2:
-                    break
 
         
     print(f"DONE {len(voices)} voices and {len(data)} text")

@@ -10,7 +10,8 @@ CONFIG_PATH = "./configs/base.yaml"
 SCRIPT_PATH = "./scripts/change_voice_01.txt"
 MODE = "dev"
 file_name = './logs/status/01_hn_female_ngochuyen_full_48k-fhg.json'
-NUM_WORKER = 4
+NUM_WORKER = 10
+BATCH_SIZE = 100
 
 def load_input(input_path):
     with open(input_path, 'r') as file:
@@ -100,9 +101,14 @@ class Worker:
             self.crawl_data(log_path, save_path, configs, status_path, index)
         self.is_working = False
 
-def process_batch(worker,, batch_data, i_start):
+def process_batch(worker,configs, log_pre_path, status_path, batch_data, i_start, output_path):
+    i = i_start
     for data in batch_data:
-       worker.auto_crawl(configs, i, log_path, save_path, status_path) 
+        log_path = f"{log_pre_path}/{i}.json"
+        save_path = output_path + "/" + f"{i}.wav"
+
+        worker.auto_crawl(configs, i, log_path, save_path, status_path) 
+        i+=1
 
 def main():
     with open(CONFIG_PATH, 'r') as file:
@@ -132,22 +138,26 @@ def main():
         os.makedirs(status_path, exist_ok=True)
         output_path  = f"./data/output/{name}_{configs['api']['content']['voice_code']}"
         os.makedirs(output_path, exist_ok=True)
- 
-        for i, line in enumerate(data):
-            log_path = f"{log_pre_path}/{i}.json"
-            save_path = output_path + "/" + f"{i}.wav"
-            
+        
+        i_batch = 0 
+        while len(data) - i_batch*BATCH_SIZE > 0:
+            i_start = i_batch*BATCH_SIZE
+            if len(data) - i_batch*BATCH_SIZE <= BATCH_SIZE:
+                data_batch = data[i_start:]
+            else:
+                data_batch = data[i_start:i_start+BATCH_SIZE]
+
             is_work = False
             while not is_work:
                 for worker in list_worker:
                     if not worker.get_status():
-                        session_work = threading.Thread(target= args=)
+                        session_work = threading.Thread(target= process_batch, args=(worker,configs, log_pre_path, status_path, data_batch, i_start, output_path))
                         session_work.start()
                         is_work = True
                         break
                 time.sleep(5)
 
-                        
+            i_batch +=1           
 
                                 
 def check_done():
