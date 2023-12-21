@@ -56,6 +56,8 @@ def main():
         os.makedirs(output_path, exist_ok = True)
 
         for i, line in tqdm(enumerate(data)):
+            if i<4293:
+                continue
             log_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}/{i}.json" 
 
             # skip 

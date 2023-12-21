@@ -43,6 +43,7 @@ if __name__ == "__main__":
         os.makedirs(output_path, exist_ok=True)
  
         for i, line in enumerate(data):
+           
             log_path = f"{log_pre_path}/{i}.json"
             save_path = output_path + "/" + f"{i}.wav"
             
@@ -56,12 +57,7 @@ if __name__ == "__main__":
                 info_1 = load_json_file(log_path)
                 
                 is_success = False
-                loop_i = 0
                 while not is_success:
-                    if loop_i == 10:
-                        break
-                    else:
-                        loop_i += 1
                     request_id = info_1['result']['request_id']
                     info_2 = get_info(request_id, configs)
                     if info_2['result']['status'] == "SUCCESS":
