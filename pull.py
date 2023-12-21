@@ -53,10 +53,7 @@ if __name__ == "__main__":
             # crawl data
             n_loop = 0
             if not os.path.exists(save_path):
-                if n_loop <2:
-                    n_loop += 1 
-                else: 
-                    continue
+               
                 ss_path = f"{status_path}/{i}.txt"
                 info_1 = load_json_file(log_path)
                 
@@ -80,6 +77,10 @@ if __name__ == "__main__":
                             print(f"Done")
                     else:
                         time.sleep(5)
+                        if n_loop <2:
+                            n_loop += 1 
+                        else: 
+                            continue
                         print(f"wait process {log_path}")
 
 def check_done():
