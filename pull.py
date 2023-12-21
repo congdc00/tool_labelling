@@ -38,6 +38,7 @@ if __name__ == "__main__":
         configs["api"]["content"]["voice_code"] = voice
         log_pre_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}"
         status_path = log_pre_path.replace("init", "status")
+        os.makedirs(status_path, exist_ok=True)
         output_path  = f"./data/output/{name}_{configs['api']['content']['voice_code']}"
         os.makedirs(output_path, exist_ok=True)
  
@@ -65,6 +66,11 @@ if __name__ == "__main__":
                            
                             with open(save_path, 'wb') as file:
                                 file.write(response.content)
+
+                            with open(ss_path, 'w') as file:
+                                content = f"{i}, {info_1['text']}, {save_path}"
+                                file.write(content)
+
                             is_success = True
                             print(f"Done")
                     else:
