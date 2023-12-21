@@ -80,7 +80,7 @@ if __name__ == "__main__":
                         print(f"wait process {log_path}")
                         time.sleep(5)
                         
-                    if n_loop <2:
+                    if n_loop <1:
                         n_loop += 1 
                     else: 
                         break
