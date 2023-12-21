@@ -53,7 +53,7 @@ if __name__ == "__main__":
             # crawl data
             n_loop = 0
             if not os.path.exists(save_path):
-                if n_loop <10:
+                if n_loop <2:
                     n_loop += 1 
                 else: 
                     break
