@@ -59,6 +59,7 @@ if __name__ == "__main__":
                 is_success = False
                 n_loop = 0
                 while not is_success:
+
                     request_id = info_1['result']['request_id']
                     info_2 = get_info(request_id, configs)
                     if info_2['result']['status'] == "SUCCESS":
