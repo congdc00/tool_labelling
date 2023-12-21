@@ -51,8 +51,12 @@ if __name__ == "__main__":
                 time.sleep(3)
                 print(f"wait pull {log_path}")
             # crawl data
+            n_loop = 0
             if not os.path.exists(save_path):
-
+                if n_loop <10:
+                    n_loop += 1 
+                else: 
+                    break
                 ss_path = f"{status_path}/{i}.txt"
                 info_1 = load_json_file(log_path)
                 

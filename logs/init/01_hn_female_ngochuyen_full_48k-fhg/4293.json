@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 115,
+        "request_id": "2f3fd479-3dfb-404d-a505-55556d089aae",
+        "sample_rate": "44100",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_female_ngochuyen_full_48k-fhg"
+    },
+    "status": 1,
+    "text": "trong khi ôn tĩnh là một cô gái hết sức bình thường thì trần nhiên lại được mệnh danh là chư bát giới thời hiện đại",
+    "id": 4293
+}

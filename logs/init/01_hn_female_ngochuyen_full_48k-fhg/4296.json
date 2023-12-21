@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 100,
+        "request_id": "8c6e3c2b-9199-402b-907f-d8c99522c36d",
+        "sample_rate": "44100",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_female_ngochuyen_full_48k-fhg"
+    },
+    "status": 1,
+    "text": "không cần gõ nhập khẩu mỗi lần đăng nhập chỉ cần dùng ngón tay chạm vào là máy đã sẵn sàng hoạt động",
+    "id": 4296
+}
