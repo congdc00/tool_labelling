@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 53,
+        "request_id": "5a1dd42f-52ca-473a-bd39-696be74b93db",
+        "sample_rate": "44100",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_female_ngochuyen_full_48k-fhg"
+    },
+    "status": 1,
+    "text": "để cậu nhỏ hướng lên hay hướng xuống khi mặc quần lót",
+    "id": 1
+}

@@ -100,10 +100,6 @@ class Worker:
             self.crawl_data(log_path, save_path, configs, status_path, index)
         self.is_working = False
 
-def process_batch(worker,, batch_data, i_start):
-    for data in batch_data:
-       worker.auto_crawl(configs, i, log_path, save_path, status_path) 
-
 def main():
     with open(CONFIG_PATH, 'r') as file:
         configs = yaml.safe_load(file)
@@ -141,7 +137,7 @@ def main():
             while not is_work:
                 for worker in list_worker:
                     if not worker.get_status():
-                        session_work = threading.Thread(target= args=)
+                        session_work = threading.Thread(target=worker.auto_crawl, args=(configs, i, log_path, save_path, status_path))
                         session_work.start()
                         is_work = True
                         break
