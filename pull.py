@@ -56,7 +56,7 @@ if __name__ == "__main__":
                 if n_loop <2:
                     n_loop += 1 
                 else: 
-                    break
+                    continue
                 ss_path = f"{status_path}/{i}.txt"
                 info_1 = load_json_file(log_path)
                 
