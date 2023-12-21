@@ -80,7 +80,7 @@ if __name__ == "__main__":
                         if n_loop <2:
                             n_loop += 1 
                         else: 
-                            continue
+                            break
                         print(f"wait process {log_path}")
 
 def check_done():
