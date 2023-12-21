@@ -8,7 +8,7 @@ from schedule import every, repeat
 import threading
 
 CONFIG_PATH = "./configs/base.yaml"
-SCRIPT_PATH = "./scripts/change_voice_01.txt"
+SCRIPT_PATH = "./scripts/change_voice_02.txt"
 MODE = "client"
 def push(input, configs):
     header = {
