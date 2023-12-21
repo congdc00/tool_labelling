@@ -2,9 +2,12 @@ from glob import glob
 import os 
 from tqdm import tqdm
 
+META_PATH = "./data/metadata/"
+
 if __name__ == "__main__":
     folder_pocess = "./logs/status/*"
     list_voice = glob(folder_pocess)
+    os.makedirs(META_PATH, exist_ok = True)
 
     for voice in tqdm(list_voice):
         
