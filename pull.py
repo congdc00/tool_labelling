@@ -55,7 +55,9 @@ if __name__ == "__main__":
                
                 ss_path = f"{status_path}/{i}.txt"
                 info_1 = load_json_file(log_path)
-                print(f"info_1 {info_1}")
+                if info_1['status'] == 0:
+                    continue 
+
                 is_success = False
                 n_loop = 0
                 while not is_success:
