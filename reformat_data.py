@@ -15,7 +15,7 @@ if __name__ == "__main__":
             
             with open(log_path, 'r') as file:
                 for line in file:
-                    text, path = line.split(",")
+                    index, text, path = line.split(",")
                     path = os.path.basename(path)
                     n_line = f"{path}|{text}"
         
