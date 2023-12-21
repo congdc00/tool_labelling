@@ -25,9 +25,13 @@ def push(input, configs):
     "bitrate": configs['api']['content']['bitrate'] ,
     "speed_rate":configs['api']['content']['speed_rate'] 
     }
-    response = requests.post(configs['api']['port'], json=content, headers=header)
-
-    return response.json()
+    while True:
+        response = requests.post(configs['api']['port'], json=content, headers=header)
+        try:
+            result = response.json()
+            return result
+        except:
+            time.sleep(5)
 
 def load_input(input_path):
     with open(input_path, 'r') as file:
