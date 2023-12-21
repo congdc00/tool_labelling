@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 99,
+        "request_id": "c4e34600-3262-48ca-9412-cba8ca6d67ca",
+        "sample_rate": "22050",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_male_manhdung_news_48k-fhg"
+    },
+    "status": 1,
+    "text": "ca sĩ thái thùy linh chia sẻ con chị không mắc chứng tự kỷ trong gia đình cũng không có người tự kỷ",
+    "id": 4
+}

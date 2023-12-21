@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 140,
+        "request_id": "981a04a2-6041-4b55-840f-be2c07b32cf1",
+        "sample_rate": "44100",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_female_ngochuyen_full_48k-fhg"
+    },
+    "status": 1,
+    "text": "phòng khám phụ khoa dùng hệ thống đồ đạc y tế hiện đại được nhập khẩu từ nước ngoài đặc biệt là các trang thiết bị liên quan tới bệnh phụ nữ",
+    "id": 11
+}

@@ -8,7 +8,7 @@ api:
     type: "Bearer"
     content_type: "application/json"
   content:
-    voice_code: "hn_female_ngochuyen_full_48k-fhg"
+    voice_code: "*in script file"
     audio_type: "mp3" 
     bitrate: 128
     speed_rate: "1.0"  

@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 128,
+        "request_id": "2cf7e6c7-1953-4ffa-8c36-bc563cca3b30",
+        "sample_rate": "44100",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_female_ngochuyen_full_48k-fhg"
+    },
+    "status": 1,
+    "text": "tránh ăn một số loại món ăn chiên rán hay nướng vì chúng có thể kích thích cổ họng khiến tình trạng viêm nhiễm đau rát thêm nặng",
+    "id": 6
+}

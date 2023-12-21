@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 94,
+        "request_id": "5535f8b7-7e2d-4f37-8d9b-213f23309fcb",
+        "sample_rate": "44100",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_female_ngochuyen_full_48k-fhg"
+    },
+    "status": 1,
+    "text": "đã phải đối mặt với những trò hề hài hước khi thi nhau giành lấy tình cảm từ những chú chó con",
+    "id": 14
+}

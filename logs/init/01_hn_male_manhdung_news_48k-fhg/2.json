@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 95,
+        "request_id": "7ed20d86-446b-4309-ad0f-b59abb1b7e94",
+        "sample_rate": "22050",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_male_manhdung_news_48k-fhg"
+    },
+    "status": 1,
+    "text": "cả phố thắp đèn lồng lung linh và cảm giác ở nơi đây rất yên bình và con người cũng niềm nở nữa",
+    "id": 2
+}

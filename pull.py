@@ -2,24 +2,72 @@ import json
 import requests
 import yaml
 import os 
+import time
 CONFIG_PATH = "./configs/base.yaml"
+SCRIPT_PATH = "./scripts/change_voice_01.txt"
+MODE = "dev"
 file_name = './logs/status/01_hn_female_ngochuyen_full_48k-fhg.json'
+
+def load_input(input_path):
+    with open(input_path, 'r') as file:
+        lines = [line.strip() for line in file.readlines()]
+    return lines
+def load_json_file(file_path):
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    return data
+def get_info(request_id, configs):
+    port =  configs['api']['port'] + "/" + request_id 
+    header = {
+        "Authorization": f"{configs['api']['header']['type']} {configs['api']['token']}",
+        "Content-Type": configs['api']['header']['content_type']
+    }
+    response = requests.get(port, headers=header)
+    return response.json()
 if __name__ == "__main__":
-    with open(file_name, 'r', encoding='utf-8') as json_file:
-        list_data = json.load(json_file)
-    
     with open(CONFIG_PATH, 'r') as file:
         configs = yaml.safe_load(file)
-
-    output_name  = os.path.basename(file_name).split(".")[0]
-    output_path = configs['output'] + "/" + output_name + "/"
-    os.makedirs(output_path, exist_ok = True)
     
-    for data in list_data:
-        if data['status'] == 'SUCCESS':
-            url = data["audio_link"]
-            response = requests.get(url)
-            if response.status_code == 200:
-                save_path = output_path + "/" + f"{data['id']}.mp3"
-                with open(save_path, 'wb') as file:
-                    file.write(response.content)
+    input_path = configs["input"]
+    name = os.path.basename(input_path).split(".")[0]
+     
+    data = load_input(configs["input"])
+    voices = load_input(SCRIPT_PATH) 
+
+    for j, voice in enumerate(voices):
+        configs["api"]["content"]["voice_code"] = voice
+        log_pre_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}"
+        status_path = log_pre_path.replace("init", "status")
+        output_path  = f"./data/output/{name}_{configs['api']['content']['voice_code']}"
+        os.makedirs(output_path, exist_ok=True)
+ 
+        for i, line in enumerate(data):
+            log_path = f"{log_pre_path}/{i}.json"
+            save_path = output_path + "/" + f"{i}.mp3"
+            
+            while not os.path.exists(log_path):
+                time.sleep(3)
+                print(f"wait pull {log_path}")
+            # crawl data
+            if not os.path.exists(save_path):
+
+                ss_path = f"{status_path}/{i}.json"
+                info_1 = load_json_file(log_path)
+                
+                is_success = False
+                while not is_success:
+                    request_id = info_1['result']['request_id']
+                    info_2 = get_info(request_id, configs)
+                    if info_2['result']['status'] == "SUCCESS":
+                        url = info_2['result']['audio_link']
+                        response = requests.get(url)
+                        if response.status_code == 200:
+                           
+                            with open(save_path, 'wb') as file:
+                                file.write(response.content)
+                            is_success = True
+                            print(f"Done")
+                    else:
+                        time.sleep(5)
+                        print(f"wait process {log_path}")
+

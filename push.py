@@ -5,7 +5,8 @@ import os
 import json
 
 CONFIG_PATH = "./configs/base.yaml"
-
+SCRIPT_PATH = "./scripts/change_voice_01.txt"
+MODE = "dev"
 def push(input, configs):
     header = {
         "Authorization": f"{configs['api']['header']['type']} {configs['api']['token']}",
@@ -25,23 +26,52 @@ def push(input, configs):
 
     return response.json()
 
+def load_input(input_path):
+    with open(input_path, 'r') as file:
+        lines = [line.strip() for line in file.readlines()]
+    return lines
+
+def save_data(log_path, content):
+    with open(log_path, 'w', encoding='utf-8') as json_file:
+        json.dump(content, json_file, indent=4, ensure_ascii=False)
+
+
 if __name__ == "__main__":
     with open(CONFIG_PATH, 'r') as file:
         configs = yaml.safe_load(file)
     
     input_path = configs["input"]
     name = os.path.basename(input_path).split(".")[0]
-    responses_list = []
-    with open(configs["input"], 'r') as file:
-        for i, line in tqdm(enumerate(file)):
+    
+     
+    data = load_input(configs["input"])
+    voices = load_input(SCRIPT_PATH) 
+
+    for j, voice in enumerate(voices):
+        configs["api"]["content"]["voice_code"] = voice
+
+        output_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}"
+        os.makedirs(output_path, exist_ok = True)
+
+        for i, line in enumerate(data):
+            log_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}/{i}.json" 
+
+            # skip 
+            if os.path.exists(log_path):
+                continue
+
+            # run
             text = line.replace("\n", "")
-            response = push(text, configs)
-            response['text'] = text
-            response['id'] = i
-            responses_list.append(response)
-            if i == 2:
-                break
-    output_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}.json"
-    with open(output_path, 'w', encoding='utf-8') as json_file:
-        json.dump(responses_list, json_file, indent=4, ensure_ascii=False)
-    print(f"DONE")
+            if len(text) > 0: 
+                response = push(text, configs)
+                response['text'] = text
+                response['id'] = i
+                save_data(log_path, response)
+            
+            # test
+            if MODE == "dev":
+                if i >=2:
+                    break
+
+        
+    print(f"DONE {len(voices)} voices and {len(data)} text")

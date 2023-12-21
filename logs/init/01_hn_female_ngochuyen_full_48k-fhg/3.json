@@ -1,0 +1,16 @@
+{
+    "result": {
+        "app_id": "640838a3-5a0e-4fae-b94b-0c3ef76a80cb",
+        "audio_type": "mp3",
+        "bitrate": 128,
+        "characters": 109,
+        "request_id": "822d2aea-3a0d-432d-92ae-63c2ec0365fe",
+        "sample_rate": "44100",
+        "speed_rate": "1.0",
+        "status": "IN_PROGRESS",
+        "voice_code": "hn_female_ngochuyen_full_48k-fhg"
+    },
+    "status": 1,
+    "text": "đây là mức chi phí có lí nhất dựa trên kỹ thuật ứng dụng tiên tiến mang đến sự ưng ý tuyệt đối cho trường hợp",
+    "id": 3
+}
