@@ -55,11 +55,11 @@ if __name__ == "__main__":
                
                 ss_path = f"{status_path}/{i}.txt"
                 info_1 = load_json_file(log_path)
-                
+                print(f"info_1 {info_1}")
                 is_success = False
                 n_loop = 0
                 while not is_success:
-
+                    
                     request_id = info_1['result']['request_id']
                     info_2 = get_info(request_id, configs)
                     if info_2['result']['status'] == "SUCCESS":
