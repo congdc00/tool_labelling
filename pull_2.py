@@ -10,7 +10,7 @@ CONFIG_PATH = "./configs/base.yaml"
 SCRIPT_PATH = "./scripts/change_voice_02.txt"
 MODE = "dev"
 file_name = './logs/status/01_hn_female_ngochuyen_full_48k-fhg.json'
-NUM_WORKER = 10
+NUM_WORKER = 30
 BATCH_SIZE = 100
 
 def load_input(input_path):
