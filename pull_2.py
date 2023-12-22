@@ -27,8 +27,13 @@ def get_info(request_id, configs):
         "Authorization": f"{configs['api']['header']['type']} {configs['api']['token']}",
         "Content-Type": configs['api']['header']['content_type']
     }
-    response = requests.get(port, headers=header)
-    return response.json()
+    while True:
+        response = requests.get(port, headers=header)
+        try:
+            result = response.json()
+            return result
+        except:
+            time.sleep(5)
 
 # worker
 class Worker:
