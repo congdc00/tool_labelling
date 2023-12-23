@@ -71,11 +71,15 @@ class Worker:
         # load info download 
         request_id = info_1['result']['request_id']
         is_done = False
+        loop = 0
         while not is_done:
             info_2 = get_info(request_id, configs)
             if info_2['status'] == 1:
                 is_done = True
-        
+            loop += 1
+            if loop >= self.limit_loop:
+                return False
+ 
         is_success = False
         loop = 0
         while not is_success:
