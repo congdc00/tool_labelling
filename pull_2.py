@@ -79,6 +79,7 @@ class Worker:
             loop += 1
             if loop >= self.limit_loop:
                 return False
+            time.sleep(3)
  
         is_success = False
         loop = 0
