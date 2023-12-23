@@ -70,8 +70,12 @@ class Worker:
         
         # load info download 
         request_id = info_1['result']['request_id']
-        info_2 = get_info(request_id, configs)
-
+        is_done = False
+        while not is_done:
+            info_2 = get_info(request_id, configs)
+            if info_2['status'] == 1:
+                is_done = True
+        
         is_success = False
         loop = 0
         while not is_success:
