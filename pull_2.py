@@ -6,12 +6,14 @@ import time
 from schedule import every, repeat
 import schedule
 import threading
+
 CONFIG_PATH = "./configs/base.yaml"
 SCRIPT_PATH = "./scripts/change_voice_01.txt"
 MODE = "dev"
 file_name = './logs/status/01_hn_female_ngochuyen_full_48k-fhg.json'
-NUM_WORKER = 6
+NUM_WORKER = 7
 BATCH_SIZE = 30
+START_LINE_IN_SCRIPT = 1
 
 def load_input(input_path):
     with open(input_path, 'r') as file:
@@ -147,6 +149,9 @@ def main():
         list_worker.append(worker)
 
     for j, voice in enumerate(voices):
+        if j < START_LINE_IN_SCRIPT:
+            continue
+
         configs["api"]["content"]["voice_code"] = voice
         log_pre_path = f"{configs['log']}/init/{name}_{configs['api']['content']['voice_code']}"
         status_path = log_pre_path.replace("init", "status")
