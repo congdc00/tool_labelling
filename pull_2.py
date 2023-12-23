@@ -7,7 +7,7 @@ from schedule import every, repeat
 import schedule
 import threading
 CONFIG_PATH = "./configs/base.yaml"
-SCRIPT_PATH = "./scripts/change_voice_02.txt"
+SCRIPT_PATH = "./scripts/change_voice_01.txt"
 MODE = "dev"
 file_name = './logs/status/01_hn_female_ngochuyen_full_48k-fhg.json'
 NUM_WORKER = 15
