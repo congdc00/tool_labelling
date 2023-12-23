@@ -76,6 +76,7 @@ class Worker:
             info_2 = get_info(request_id, configs)
             if info_2['status'] == 1:
                 is_done = True
+                continue
             loop += 1
             if loop >= self.limit_loop:
                 return False
