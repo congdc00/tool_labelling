@@ -9,7 +9,7 @@ api:
     content_type: "application/json"
   content:
     voice_code: "*in script file"
-    audio_type: "mp3" 
+    audio_type: "wav" 
     bitrate: 128
     speed_rate: "1.0"  
 output: "./data/output"

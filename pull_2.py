@@ -10,8 +10,8 @@ CONFIG_PATH = "./configs/base.yaml"
 SCRIPT_PATH = "./scripts/change_voice_02.txt"
 MODE = "dev"
 file_name = './logs/status/01_hn_female_ngochuyen_full_48k-fhg.json'
-NUM_WORKER = 30
-BATCH_SIZE = 100
+NUM_WORKER = 15
+BATCH_SIZE = 30
 
 def load_input(input_path):
     with open(input_path, 'r') as file:
@@ -151,7 +151,6 @@ def main():
                 data_batch = data[i_start:]
             else:
                 data_batch = data[i_start:i_start+BATCH_SIZE]
-
             is_work = False
             while not is_work:
                 for worker in list_worker:
@@ -161,9 +160,7 @@ def main():
                         is_work = True
                         break
                 time.sleep(5)
-
             i_batch +=1           
-
                                 
 def check_done():
     return True
